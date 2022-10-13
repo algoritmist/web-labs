@@ -20,11 +20,12 @@ $time_start = microtime(true);
 $result = checkIn($x, $y, $r) ? "Попадание" : "Промах";
 $time_end = microtime(true);
 $execution_time = ($time_end - $time_start);
+$execution_time_short = intval($execution_time * ($p = pow(10, 3))) / $p;
 echo json_encode(
     array(
         'cords' => array($x, $y, $r),
         'time' => $start,
-        'exec' => $execution_time,
+        'exec' => $execution_time_short,
         'result' => $result
     )
 );
