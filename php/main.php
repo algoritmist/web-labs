@@ -1,6 +1,25 @@
 <?php
 function checkIn($x, $y, $r)
 {
+    $xMin = -4;
+    $xMax = 4;
+    $yMin = -3;
+    $yMax = 5;
+    $rMin = 1;
+    $rMax = 5;
+
+    if(!($xMin <= $x and $x <= $xMax)){
+        return false;
+    }
+
+    if(!($yMin <= $y and $y <= $yMax)){
+        return false;
+    }
+
+    if(!($rMin <= $x and $x <= $rMax)){
+        return false;
+    }
+
     if ($x >= 0 and $y >= 0) {
         return $x <= $r and 2 * ($x + $y) <= $r;
     }
