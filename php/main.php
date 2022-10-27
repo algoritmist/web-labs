@@ -16,7 +16,7 @@ function checkIn($x, $y, $r)
         return false;
     }
 
-    if(!($rMin <= $x and $x <= $rMax)){
+    if(!($rMin <= $r and $r <= $rMax)){
         return false;
     }
 
