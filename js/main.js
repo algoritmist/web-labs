@@ -24,7 +24,7 @@ $("#y-textinput").on("input", function () {
 });
 
 $("#submit").click(function () {
-    //checkboxes
+    //checkboxest
     const checks = $(".x-check:checked").map(function () {
         return parseInt(this.value);
     }).get();
