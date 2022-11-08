@@ -1,7 +1,6 @@
 package org.algoritmist.weblabs.lab2.controller.model;
 
-import org.algoritmist.weblabs.lab2.controller.shapes.Point;
-import org.algoritmist.weblabs.lab2.controller.shapes.Shape;
+import org.algoritmist.weblabs.lab2.controller.shapes.*;
 
 import java.util.Arrays;
 
@@ -10,6 +9,27 @@ public class Graph {
 
     public Graph(Shape[] shapes) {
         parts = shapes;
+    }
+
+    public static Graph graphFromRadius(Double r){
+        return new Graph(
+                new Shape[]{
+                        new Rectangle(
+                                new Point(0, 0),
+                                new Point(r, -0.5 * r)
+                        ),
+                        new Triangle(
+                                new Point(-r, 0),
+                                new Point(0, 0),
+                                new Point(0, r)
+                        ),
+                        new Sector(
+                                new Point(0, 0),
+                                new Point(0.5 * r, 0),
+                                new Point(0, 0.5 * r)
+                        )
+                }
+        );
     }
 
     public boolean isInside(Point point) {
