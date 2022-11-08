@@ -11,15 +11,12 @@ public class Triangle implements Shape {
         this.p3 = p3;
     }
 
-    private int sign(int x) {
-        return Integer.compare(x, 0);
-    }
 
     @Override
     public boolean isInside(Point point) {
-        int s1 = sign(point.multiply(p1));
-        int s2 = sign(point.multiply(p2));
-        int s3 = sign(point.multiply(p3));
+        double s1 = Math.signum(point.multiply(p1));
+        double s2 = Math.signum(point.multiply(p2));
+        double s3 = Math.signum(point.multiply(p3));
         return s1 == s2 && s2 == s3;
     }
 }

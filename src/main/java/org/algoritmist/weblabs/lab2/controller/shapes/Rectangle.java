@@ -1,6 +1,5 @@
 package org.algoritmist.weblabs.lab2.controller.shapes;
 
-import org.algoritmist.weblabs.lab2.controller.model.Dot;
 
 public class Rectangle implements Shape {
     private Point lPoint;
