@@ -1,6 +1,9 @@
 package org.algoritmist.weblabs.lab2.controller;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,12 +13,12 @@ import java.io.IOException;
 
 @WebServlet("/check")
 public class ControllerServlet extends HttpServlet {
+    //private final Logger logger = LogManager.getLogger(ControllerServlet.class);
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String requestType = request.getParameter("TYPE");
         if (requestType == null) {
-            ///TODO: SEND MESSAGE "NO REQUEST TYPE"
             return;
         }
 
@@ -29,6 +32,5 @@ public class ControllerServlet extends HttpServlet {
             String[] rValues = request.getParameterValues("r");
             request.getRequestDispatcher("/areaCheck").forward(request, response);
         }
-        ///TODO: SEND MESSAGE "INVALID REQUEST"
     }
 }

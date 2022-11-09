@@ -2,6 +2,9 @@ package org.algoritmist.weblabs.lab2.controller.model;
 
 import com.google.gson.Gson;
 import org.algoritmist.weblabs.lab2.controller.shapes.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,9 +44,9 @@ public class AreaCheckServlet extends HttpServlet {
                     }
                 }
             }
-        }
-        catch(IOException e){
-
+        } catch (IOException e) {
+            Logger logger = LogManager.getLogger(AreaCheckServlet.class);
+            logger.error(e.getMessage());
         }
     }
 
@@ -55,6 +58,7 @@ public class AreaCheckServlet extends HttpServlet {
         String curTime = hours + ":" + minutes + ":" + seconds;
         return curTime;
     }
+
     private void writeJSON(Response answer, HttpServletResponse response) throws IOException {
         Gson gson = new Gson();
         String JSONResponse = gson.toJson(answer);
