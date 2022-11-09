@@ -1,6 +1,5 @@
 package org.algoritmist.weblabs.lab2.model;
 
-import org.algoritmist.weblabs.lab2.controller.shapes.*;
 import org.algoritmist.weblabs.lab2.shapes.*;
 
 import java.util.Arrays;
