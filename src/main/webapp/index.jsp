@@ -5,6 +5,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
+<%!
+    final int X = 300;
+    final int Y = 300;
+    final int centerX = X / 2;
+    final int centerY = Y / 2;
+    final int R = 100;
+%>
 <head>
     <meta charset="UTF-8">
 
@@ -12,13 +19,24 @@
 </head>
 
 <body>
-    <header class="header">
-        <div>Баранов Вячеслав P32301, Вариант #321176</div>
-    </header>
-    <table class="main-table">
+<header class="header">
+    <div>Баранов Вячеслав P32301, Вариант #321176</div>
+</header>
+<table class="main-table">
     <tr class="graphic">
         <td style="vertical-align: top;">
-            <img src="<%=request.getContextPath()%>/img/areas.png" width="420" height="380" alt="Graph"/>
+            <svg width="300" height="300">
+                <!--triangle-->
+                <polygon points="<%=centerX%>,<%=centerY%> <%=centerX%>,<%=centerY - R%> <%=centerX - R%>,<%=centerY%>"
+                         style="fill:lime;stroke:purple;stroke-width:0"/>
+                <!--rectangle-->
+                <rect x="<%=centerX%>" y="<%=centerY%>" width="<%=R%>" height="<%=R/2%>"
+                      style="fill:lime;stroke:purple;stroke-width:0"/>
+                <path d="M <%=centerX%> <%=centerY%> L <%=centerX+R/2%> <%=centerY%>  A <%=R/2%> <%=R/2%> 0 0 0 <%=centerX%> <%=centerY-R/2%> Z"
+                      style="fill:lime;stroke:purple;stroke-width:0"/>
+                <line x1=<%=centerX%> y1="0" x2=<%=centerX%> y2=<%=Y%> style="stroke:rgb(0,0,0);stroke-width:2"/>
+                <line x1="0" y1="<%=centerY%>" x2="<%=X%>" y2="<%=centerY%>" style="stroke:rgb(0,0,0);stroke-width:2"/>
+            </svg>
         </td>
         <td style="vertical-align: top;">
 

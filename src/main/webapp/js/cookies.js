@@ -16,7 +16,7 @@ export function appendRecord(record) {
               <td>${"(" + [record.result.point.x, record.result.point.y, record.result.r] + ")"}</td>
               <td>${record.currentTime}</td>
               <td>${record.workingTime}</td>
-              <td>${record.result.hit}</td>
+              <td>${record.result.hit == true ? "Попадание" : "Промах"}</td>
             </tr>
   `);
 }
