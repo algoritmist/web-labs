@@ -16,31 +16,34 @@ import java.util.stream.Collectors;
 @WebServlet("/areaCheck")
 public class AreaCheckServlet extends HttpServlet {
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            double startTime = System.currentTimeMillis();
+            //TODO: add IOException catch!
+            List<Double> xValues = Arrays.stream(request.getParameterValues("x")).
+                    map(Double::parseDouble).collect(Collectors.toList());
+            List<Double> yValues = Arrays.stream(request.getParameterValues("y")).
+                    map(Double::parseDouble).collect(Collectors.toList());
+            List<Double> rValues = Arrays.stream(request.getParameterValues("r")).
+                    map(Double::parseDouble).collect(Collectors.toList());
 
-        double startTime = System.currentTimeMillis();
-        //TODO: add IOException catch!
-        List<Double> xValues = Arrays.stream(request.getParameterValues("x")).
-                map(Double::parseDouble).collect(Collectors.toList());
-        List<Double> yValues = Arrays.stream(request.getParameterValues("y")).
-                map(Double::parseDouble).collect(Collectors.toList());
-        List<Double> rValues = Arrays.stream(request.getParameterValues("r")).
-                map(Double::parseDouble).collect(Collectors.toList());
-
-        for (Double x : xValues) {
-            for (Double y : yValues) {
-                for (Double r : rValues) {
-                    Graph graph = Graph.graphFromRadius(r);
-                    Point point = new Point(x, y);
-                    Result result = new Result(point, r, graph.isInside(point));
-                    double runTime = System.currentTimeMillis() - startTime;
-                    String currentTime = getCurrentTime();
-                    Response answer = new Response(result,
-                            String.valueOf(runTime), currentTime);
-                    writeJSON(answer, response);
+            for (Double x : xValues) {
+                for (Double y : yValues) {
+                    for (Double r : rValues) {
+                        Graph graph = Graph.graphFromRadius(r);
+                        Point point = new Point(x, y);
+                        Result result = new Result(point, r, graph.isInside(point));
+                        double runTime = System.currentTimeMillis() - startTime;
+                        String currentTime = getCurrentTime();
+                        Response answer = new Response(result,
+                                String.valueOf(runTime), currentTime);
+                        writeJSON(answer, response);
+                    }
                 }
             }
+        }
+        catch(IOException e){
+
         }
     }
 

@@ -1,0 +1,15 @@
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+    <Appenders>
+        <File name="errors" fileName="servlets.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.apache.logging.log4j.Logger">
+            <AppenderRef ref="errors"/>
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="errors"/>
+        </Root>
+    </Loggers>
+</Configuration>
