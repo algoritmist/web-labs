@@ -1,4 +1,4 @@
-package org.algoritmist.weblabs.lab2.controller.shapes;
+package org.algoritmist.weblabs.lab2.shapes;
 
 import lombok.Getter;
 

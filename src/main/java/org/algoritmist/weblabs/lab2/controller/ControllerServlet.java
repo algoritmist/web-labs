@@ -13,10 +13,10 @@ import java.io.IOException;
 
 @WebServlet("/check")
 public class ControllerServlet extends HttpServlet {
-    //private final Logger logger = LogManager.getLogger(ControllerServlet.class);
+    private final Logger logger = LogManager.getLogger(ControllerServlet.class);
+
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
         String requestType = request.getParameter("TYPE");
         if (requestType == null) {
             return;
@@ -27,10 +27,11 @@ public class ControllerServlet extends HttpServlet {
         }
 
         if (requestType.equals("AREACHECK")) {
-            String[] xValues = request.getParameterValues("x");
-            String[] yValues = request.getParameterValues("y");
-            String[] rValues = request.getParameterValues("r");
-            request.getRequestDispatcher("/areaCheck").forward(request, response);
+            try {
+                request.getRequestDispatcher("/areaCheck").forward(request, response);
+            } catch (ServletException | IOException e) {
+                logger.error(e.getMessage());
+            }
         }
     }
 }

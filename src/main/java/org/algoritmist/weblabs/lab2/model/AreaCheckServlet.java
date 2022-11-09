@@ -1,11 +1,10 @@
-package org.algoritmist.weblabs.lab2.controller.model;
+package org.algoritmist.weblabs.lab2.model;
 
 import com.google.gson.Gson;
-import org.algoritmist.weblabs.lab2.controller.shapes.*;
+import org.algoritmist.weblabs.lab2.shapes.Point;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

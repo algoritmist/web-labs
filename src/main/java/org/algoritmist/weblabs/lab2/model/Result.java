@@ -1,7 +1,7 @@
-package org.algoritmist.weblabs.lab2.controller.model;
+package org.algoritmist.weblabs.lab2.model;
 
 import lombok.AllArgsConstructor;
-import org.algoritmist.weblabs.lab2.controller.shapes.Point;
+import org.algoritmist.weblabs.lab2.shapes.Point;
 
 @AllArgsConstructor
 public class Result {

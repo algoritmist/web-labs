@@ -1,4 +1,4 @@
-package org.algoritmist.weblabs.lab2.controller.shapes;
+package org.algoritmist.weblabs.lab2.shapes;
 
 public class Triangle implements Shape {
     private final Point p1;
