@@ -15,7 +15,7 @@ public class Sector implements Shape {
     public boolean isInside(Point point) {
         return centerPoint.squareDist(point)
                 <= centerPoint.squareDist(Point1) &&
-                Math.signum(Point1.multiply(point))
-                        * Math.signum(Point2.multiply(point)) <= 0;
+                Double.compare(Point1.multiply(point), 0)
+                        * Double.compare(Point2.multiply(point), 0) <= 0;
     }
 }

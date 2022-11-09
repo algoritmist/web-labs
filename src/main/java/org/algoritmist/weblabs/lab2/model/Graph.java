@@ -34,6 +34,6 @@ public class Graph {
 
     public boolean isInside(Point point) {
         return Arrays.stream(parts).map(x -> x.isInside(point)).
-                reduce(true, (x, y) -> x & y);
+                reduce(false, (x, y) -> x | y);
     }
 }

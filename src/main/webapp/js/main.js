@@ -40,10 +40,11 @@ $("#submit").click(function () {
 
         checks.forEach(box => {
             $.ajax({
-                url: './php/main.php',
-                method: 'post',
+                url: './check',
+                method: 'get',
                 dataType: 'json',
                 data: {
+                    TYPE: "AREACHECK",
                     x: box,
                     y: text,
                     r: radio,

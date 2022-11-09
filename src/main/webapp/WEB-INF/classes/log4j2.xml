@@ -1,8 +1,11 @@
 <Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
     <Appenders>
-        <File name="errors" fileName="servlets.log" append="true">
+        <!--<File name="errors" fileName="servlets.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
-        </File>
+        </File>-->
+        <Console name="errors" target="SYSTEM_ERR">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </Console>
     </Appenders>
     <Loggers>
         <Logger name="org.apache.logging.log4j.Logger">

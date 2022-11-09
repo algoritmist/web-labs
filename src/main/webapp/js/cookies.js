@@ -13,10 +13,10 @@ export function appendRecord(record) {
     let table = $(".table-container tbody");
     table.append(`
               <tr class="logged">
-              <td>${record.cords}</td>
-              <td>${record.time}</td>
-              <td>${record.exec}</td>
-              <td>${record.result}</td>
+              <td>${"(" + [record.result.point.x, record.result.point.y, record.result.r] + ")"}</td>
+              <td>${record.currentTime}</td>
+              <td>${record.workingTime}</td>
+              <td>${record.result.hit}</td>
             </tr>
   `);
 }

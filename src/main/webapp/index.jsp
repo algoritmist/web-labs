@@ -18,7 +18,7 @@
     <table class="main-table">
     <tr class="graphic">
         <td style="vertical-align: top;">
-            <img src="./img/graph.png" width="458" height="394" alt="Graph"/>
+            <img src="<%=request.getContextPath()%>/img/areas.png" width="420" height="380" alt="Graph"/>
         </td>
         <td style="vertical-align: top;">
 

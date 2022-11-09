@@ -19,4 +19,9 @@ public class Point {
         return (x - other.getX()) * (x - other.getX()) +
                 (y - other.getY()) * (y - other.getY());
     }
+
+    public double crossProduct(Point p2, Point p3) {
+        return (this.getX() - p3.getX()) * (p2.getY() - p3.getY())
+                - (p2.getX() - p3.getX()) * (this.getY() - p3.getY());
+    }
 }

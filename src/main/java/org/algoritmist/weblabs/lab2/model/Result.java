@@ -7,5 +7,5 @@ import org.algoritmist.weblabs.lab2.shapes.Point;
 public class Result {
     private Point point;
     private double r;
-    private boolean result;
+    private boolean hit;
 }
