@@ -2,6 +2,8 @@ import {
     loadRecords, appendRecord, saveRecord, clearStorage
 } from "./cookies.js";
 
+const SVG_SIZE = 300;
+
 $(function () {
     loadRecords();
 });
@@ -66,3 +68,21 @@ $("#submit").click(function () {
 $("#clear-button").click(function () {
     clearStorage();
 });
+
+$('svg').mousedown(function (e) {
+    const position = $('#svg-wrapper').offset();
+    const rowX = e.pageX - position.left;
+    const rowY = e.pageY - position.top;
+
+    const x = (((R / 50) * (SVG_SIZE / 2 - rowX) * -1) / 2).toFixed(2);
+    const y = (((R / 50) * (SVG_SIZE / 2 - rowY)) / 2).toFixed(2);
+
+    doRequest(x, y, R);
+})
+
+function doRequest(x, y, r) {
+    let request = ("check?x=" + x + "&y=" + y + "&r=" + r);
+    fetch(request)
+        .then(response => response.text())
+        .then(response => appendRecord(response));
+}

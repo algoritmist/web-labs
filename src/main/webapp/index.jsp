@@ -2,9 +2,7 @@
          pageEncoding="UTF-8"
          isELIgnored="false"
 %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page isELIgnored="false" %>
+
 <%!
     final int X = 300;
     final int Y = 300;
@@ -12,6 +10,8 @@
     final int centerY = Y / 2;
     final int R = 100;
 %>
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
 
@@ -25,7 +25,7 @@
 <table class="main-table">
     <tr class="graphic">
         <td style="vertical-align: top;">
-            <svg width="300" height="300">
+            <svg width="300" height="300" id="graph">
                 <!--triangle-->
                 <polygon points="<%=centerX%>,<%=centerY%> <%=centerX%>,<%=centerY - R%> <%=centerX - R%>,<%=centerY%>"
                          style="fill:lime;stroke:purple;stroke-width:0"/>
