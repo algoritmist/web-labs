@@ -20,6 +20,6 @@ public class Sector implements Shape {
         Vector OP = new Vector(centerPoint, point);
         return centerPoint.squareDist(point)
                 <= centerPoint.squareDist(Point1) &&
-                OA.multiply(OP) * OB.multiply(OP) <= 0;
+                Math.max(OA.multiply(OP), OP.multiply(OB)) <= OA.multiply(OB);
     }
 }
