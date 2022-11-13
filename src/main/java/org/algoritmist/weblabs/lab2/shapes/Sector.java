@@ -1,5 +1,7 @@
 package org.algoritmist.weblabs.lab2.shapes;
 
+import org.algoritmist.weblabs.lab2.model.Vector;
+
 public class Sector implements Shape {
     private final Point centerPoint;
     private final Point Point1;
@@ -13,9 +15,11 @@ public class Sector implements Shape {
 
     @Override
     public boolean isInside(Point point) {
+        Vector OA = new Vector(centerPoint, Point1);
+        Vector OB = new Vector(centerPoint, Point2);
+        Vector OP = new Vector(centerPoint, point);
         return centerPoint.squareDist(point)
                 <= centerPoint.squareDist(Point1) &&
-                Double.compare(Point1.multiply(point), 0)
-                        * Double.compare(Point2.multiply(point), 0) <= 0;
+                OA.multiply(OP) * OB.multiply(OP) <= 0;
     }
 }
