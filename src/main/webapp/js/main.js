@@ -47,7 +47,6 @@ $("#clear-button").click(function () {
 });
 
 $('#graph').mousedown(function (e) {
-    alert("pressed the graph");
     const position = $('#graph-wrapper').offset();
     const rowX = e.pageX - position.left;
     const rowY = e.pageY - position.top;
