@@ -2,8 +2,7 @@ package org.algoritmist.weblabs.lab2.model;
 
 import com.google.gson.Gson;
 import org.algoritmist.weblabs.lab2.shapes.Point;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.jboss.logging.Logger;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +16,12 @@ import java.util.stream.Collectors;
 
 @WebServlet("/areaCheck")
 public class AreaCheckServlet extends HttpServlet {
+    private final Logger logger = Logger.getLogger(AreaCheckServlet.class);
+
+    private boolean isLegal(Double x, Double y, Double r) {
+        return (-4 <= x && x <= 4) && (-3 <= y && y <= 3) && (1 <= r && r <= 5);
+    }
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -34,7 +39,7 @@ public class AreaCheckServlet extends HttpServlet {
                     for (Double r : rValues) {
                         Graph graph = Graph.graphFromRadius(r);
                         Point point = new Point(x, y);
-                        Result result = new Result(point, r, graph.isInside(point));
+                        Result result = new Result(point, r, isLegal(x, y, r) && graph.isInside(point));
                         double runTime = System.currentTimeMillis() - startTime;
                         String currentTime = getCurrentTime();
                         Response answer = new Response(result,
@@ -44,7 +49,6 @@ public class AreaCheckServlet extends HttpServlet {
                 }
             }
         } catch (IOException e) {
-            Logger logger = LogManager.getLogger(AreaCheckServlet.class);
             logger.error(e.getMessage());
         }
     }

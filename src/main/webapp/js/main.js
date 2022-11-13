@@ -3,13 +3,14 @@ import {
 } from "./cookies.js";
 
 const SVG_SIZE = 300;
+const R = 3;
 
 $(function () {
     loadRecords();
 });
 
 function checkTextY(val) {
-    return (val >= -3 && val <= 5);
+    return (val >= -3 && val <= 3);
 }
 
 $("#y-textinput").on("input", function () {
@@ -35,42 +36,19 @@ $("#submit").click(function () {
     //radio
     const radio = parseInt($(".r-radio-check:checked").val());
 
-    ajax: {
-        if (checks.length == 0) break ajax;
-        if (isNaN(text) || !checkTextY(text)) break ajax;
-        if (isNaN(radio)) break ajax;
+    checks.forEach(box => {
+       doRequest(box, text, radio)
+    });
 
-        checks.forEach(box => {
-            $.ajax({
-                url: './check',
-                method: 'get',
-                dataType: 'json',
-                data: {
-                    TYPE: "AREACHECK",
-                    x: box,
-                    y: text,
-                    r: radio,
-                    timezone: new Date().getTimezoneOffset()
-                },
-                success: function (record) {
-                    //alert(record);
-                    saveRecord(record);
-                    appendRecord(record);
-                },
-                error: function () {
-                    console.log("Nooo, PHP error!!!");
-                }
-            });
-        });
-    }
 });
 
 $("#clear-button").click(function () {
     clearStorage();
 });
 
-$('svg').mousedown(function (e) {
-    const position = $('#svg-wrapper').offset();
+$('#graph').mousedown(function (e) {
+    alert("pressed the graph");
+    const position = $('#graph-wrapper').offset();
     const rowX = e.pageX - position.left;
     const rowY = e.pageY - position.top;
 
@@ -78,11 +56,34 @@ $('svg').mousedown(function (e) {
     const y = (((R / 50) * (SVG_SIZE / 2 - rowY)) / 2).toFixed(2);
 
     doRequest(x, y, R);
-})
+});
 
-function doRequest(x, y, r) {
-    let request = ("check?x=" + x + "&y=" + y + "&r=" + r);
-    fetch(request)
-        .then(response => response.text())
-        .then(response => appendRecord(response));
+function doRequest(X, Y, R) {
+    ajax: {
+        if (checks.length == 0) break ajax;
+        if (isNaN(text) || !checkTextY(text)) break ajax;
+        if (isNaN(radio)) break ajax;
+
+
+        $.ajax({
+            url: './check',
+            method: 'get',
+            dataType: 'json',
+            data: {
+                TYPE: "AREACHECK",
+                x: X,
+                y: Y,
+                r: R,
+                timezone: new Date().getTimezoneOffset()
+            },
+            success: function (record) {
+                //alert(record);
+                saveRecord(record);
+                appendRecord(record);
+            },
+            error: function () {
+                console.log("Nooo, PHP error!!!");
+            }
+        });
+    }
 }

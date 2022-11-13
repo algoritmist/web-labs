@@ -1,8 +1,7 @@
 package org.algoritmist.weblabs.lab2.controller;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import org.jboss.logging.Logger;
+
 @WebServlet("/check")
 public class ControllerServlet extends HttpServlet {
-    private final Logger logger = LogManager.getLogger(ControllerServlet.class);
+    private final Logger logger = Logger.getLogger(ControllerServlet.class);
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {

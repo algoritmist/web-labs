@@ -25,18 +25,22 @@
 <table class="main-table">
     <tr class="graphic">
         <td style="vertical-align: top;">
-            <svg width="300" height="300" id="graph">
-                <!--triangle-->
-                <polygon points="<%=centerX%>,<%=centerY%> <%=centerX%>,<%=centerY - R%> <%=centerX - R%>,<%=centerY%>"
-                         style="fill:lime;stroke:purple;stroke-width:0"/>
-                <!--rectangle-->
-                <rect x="<%=centerX%>" y="<%=centerY%>" width="<%=R%>" height="<%=R/2%>"
-                      style="fill:lime;stroke:purple;stroke-width:0"/>
-                <path d="M <%=centerX%> <%=centerY%> L <%=centerX+R/2%> <%=centerY%>  A <%=R/2%> <%=R/2%> 0 0 0 <%=centerX%> <%=centerY-R/2%> Z"
-                      style="fill:lime;stroke:purple;stroke-width:0"/>
-                <line x1=<%=centerX%> y1="0" x2=<%=centerX%> y2=<%=Y%> style="stroke:rgb(0,0,0);stroke-width:2"/>
-                <line x1="0" y1="<%=centerY%>" x2="<%=X%>" y2="<%=centerY%>" style="stroke:rgb(0,0,0);stroke-width:2"/>
-            </svg>
+            <div id="graph-wrapper">
+                <svg width="300" height="300" id="graph">
+                    <!--triangle-->
+                    <polygon
+                            points="<%=centerX%>,<%=centerY%> <%=centerX%>,<%=centerY - R%> <%=centerX - R%>,<%=centerY%>"
+                            style="fill:lime;stroke:purple;stroke-width:0"/>
+                    <!--rectangle-->
+                    <rect x="<%=centerX%>" y="<%=centerY%>" width="<%=R%>" height="<%=R/2%>"
+                          style="fill:lime;stroke:purple;stroke-width:0"/>
+                    <path d="M <%=centerX%> <%=centerY%> L <%=centerX+R/2%> <%=centerY%>  A <%=R/2%> <%=R/2%> 0 0 0 <%=centerX%> <%=centerY-R/2%> Z"
+                          style="fill:lime;stroke:purple;stroke-width:0"/>
+                    <line x1=<%=centerX%> y1="0" x2=<%=centerX%> y2=<%=Y%> style="stroke:rgb(0,0,0);stroke-width:2"/>
+                    <line x1="0" y1="<%=centerY%>" x2="<%=X%>" y2="<%=centerY%>"
+                          style="stroke:rgb(0,0,0);stroke-width:2"/>
+                </svg>
+            </div>
         </td>
         <td style="vertical-align: top;">
 
@@ -95,7 +99,7 @@
                             <td>
                                 <div class="y-text" id="Y" align="left">
                                     <label>
-                                        <input id="y-textinput" type="text" name="y" placeholder="[-3; 5]"
+                                        <input id="y-textinput" type="text" name="y" placeholder="[-3; 3]"
                                         />
                                     </label>
                                 </div>

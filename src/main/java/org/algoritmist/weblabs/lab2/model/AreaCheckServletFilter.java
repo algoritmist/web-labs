@@ -1,8 +1,8 @@
 package org.algoritmist.weblabs.lab2.model;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.jboss.logging.Logger;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -13,7 +13,7 @@ import java.util.Arrays;
 @WebFilter("/areaFilter")
 public class AreaCheckServletFilter implements Filter {
     private ServletContext context;
-    private final Logger logger = LogManager.getLogger(AreaCheckServletFilter.class);
+    private final Logger logger = Logger.getLogger(AreaCheckServletFilter.class);
 
     @Override
     public void init(FilterConfig config) {
@@ -22,7 +22,7 @@ public class AreaCheckServletFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain){
         String xVals = Arrays.toString(servletRequest.getParameterValues("x"));
         String yVals = Arrays.toString(servletRequest.getParameterValues("y"));
         String rVals = Arrays.toString(servletRequest.getParameterValues("r"));
