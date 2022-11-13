@@ -60,11 +60,8 @@ $('#graph').mousedown(function (e) {
 
 function doRequest(X, Y, R) {
     ajax: {
-        if (checks.length == 0) break ajax;
         if (isNaN(text) || !checkTextY(text)) break ajax;
         if (isNaN(radio)) break ajax;
-
-
         $.ajax({
             url: './check',
             method: 'get',
