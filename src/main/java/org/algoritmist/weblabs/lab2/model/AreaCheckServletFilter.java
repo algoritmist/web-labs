@@ -2,18 +2,17 @@ package org.algoritmist.weblabs.lab2.model;
 
 
 
-import org.jboss.logging.Logger;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import java.io.IOException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @WebFilter("/areaFilter")
 public class AreaCheckServletFilter implements Filter {
     private ServletContext context;
-    private final Logger logger = Logger.getLogger(AreaCheckServletFilter.class);
+    private final Logger logger = Logger.getLogger("org.algoritmist.weblabs.lab2.model");
 
     @Override
     public void init(FilterConfig config) {
@@ -28,7 +27,7 @@ public class AreaCheckServletFilter implements Filter {
         String rVals = Arrays.toString(servletRequest.getParameterValues("r"));
         String message = String.format("received coordinates\n\tx: %s\n\ty: %s\n\tr: %s\n",
                 xVals, yVals, rVals);
-        logger.info(message);
+        logger.log(Level.INFO, message);
     }
 
     @Override

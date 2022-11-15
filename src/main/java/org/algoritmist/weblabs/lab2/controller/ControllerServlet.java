@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import org.jboss.logging.Logger;
 
 @WebServlet("/check")
 public class ControllerServlet extends HttpServlet {
-    private final Logger logger = Logger.getLogger(ControllerServlet.class);
+    private final Logger logger = Logger.getLogger("org.algoritmist.weblabs.lab2.controller");
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -31,7 +32,7 @@ public class ControllerServlet extends HttpServlet {
             try {
                 request.getRequestDispatcher("/areaCheck").forward(request, response);
             } catch (ServletException | IOException e) {
-                logger.error(e.getMessage());
+                logger.log(Level.WARNING, e.getMessage());
             }
         }
     }

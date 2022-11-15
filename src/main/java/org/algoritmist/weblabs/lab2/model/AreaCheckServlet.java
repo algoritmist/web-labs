@@ -2,7 +2,6 @@ package org.algoritmist.weblabs.lab2.model;
 
 import com.google.gson.Gson;
 import org.algoritmist.weblabs.lab2.shapes.Point;
-import org.jboss.logging.Logger;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +11,13 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @WebServlet("/areaCheck")
 public class AreaCheckServlet extends HttpServlet {
-    private final Logger logger = Logger.getLogger(AreaCheckServlet.class);
+    private final Logger logger = Logger.getLogger("org.algoritmist.weblabs.lab2.model");
 
     private boolean isLegal(Double x, Double y, Double r) {
         return (-4 <= x && x <= 4) && (-3 <= y && y <= 3) && (1 <= r && r <= 5);
@@ -49,7 +50,7 @@ public class AreaCheckServlet extends HttpServlet {
                 }
             }
         } catch (IOException e) {
-            logger.error(e.getMessage());
+            logger.log(Level.INFO, e.getMessage());
         }
     }
 
