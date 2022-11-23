@@ -1,7 +1,6 @@
-package org.algoritmist.weblabs.lab2.model;
+package org.algoritmist.weblabs.lab2.shapes;
 
 import lombok.Getter;
-import org.algoritmist.weblabs.lab2.shapes.Point;
 
 public class Vector {
     @Getter
@@ -13,5 +12,10 @@ public class Vector {
 
     public double multiply(Vector other) {
         return point.multiply(other.getPoint());
+    }
+
+    public double length() {
+        return Math.sqrt(point.getX() * point.getX() +
+                point.getY() * point.getY());
     }
 }

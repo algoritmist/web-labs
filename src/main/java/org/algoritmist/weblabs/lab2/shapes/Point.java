@@ -24,4 +24,5 @@ public class Point {
         return (this.getX() - p3.getX()) * (p2.getY() - p3.getY())
                 - (p2.getX() - p3.getX()) * (this.getY() - p3.getY());
     }
+
 }
