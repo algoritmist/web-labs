@@ -1,5 +1,6 @@
 package org.algoritmist.weblabs.lab2.shapes;
 
+
 public class Sector implements Shape {
     private final Point centerPoint;
     private final Point Point1;
@@ -11,13 +12,18 @@ public class Sector implements Shape {
         Point2 = B;
     }
 
+    private boolean between(Vector A, Vector B, Vector C) {
+        return Math.min(A.angle(), B.angle()) <= C.angle() &&
+                C.angle() <= Math.max(A.angle(), B.angle());
+    }
+
     @Override
     public boolean isInside(Point point) {
         Vector OA = new Vector(centerPoint, Point1);
         Vector OB = new Vector(centerPoint, Point2);
-        Vector OC = new Vector(centerPoint, point);
+        Vector OP = new Vector(centerPoint, point);
         return centerPoint.squareDist(point)
                 <= centerPoint.squareDist(Point1) &&
-                OA.multiply(OC) * OB.length() + OC.multiply(OB) * OA.length() == OA.multiply(OB) * OC.length();
+                between(OA, OB, OP);
     }
 }

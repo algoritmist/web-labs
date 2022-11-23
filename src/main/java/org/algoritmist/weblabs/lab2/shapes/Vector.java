@@ -18,4 +18,8 @@ public class Vector {
         return Math.sqrt(point.getX() * point.getX() +
                 point.getY() * point.getY());
     }
+
+    public double angle(){
+        return Math.atan2(point.getY(), point.getX());
+    }
 }
