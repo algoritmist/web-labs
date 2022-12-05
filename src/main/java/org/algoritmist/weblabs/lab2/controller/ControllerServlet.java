@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@WebServlet(value = "/Check")
+@WebServlet(value = "/lab2_war_exploded/Check")
 public class ControllerServlet extends HttpServlet {
     private final Logger logger = Logger.getLogger("org.algoritmist.weblabs.lab2.controller");
 
