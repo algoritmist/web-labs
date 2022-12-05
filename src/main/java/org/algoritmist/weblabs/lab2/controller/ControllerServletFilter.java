@@ -4,6 +4,7 @@ package org.algoritmist.weblabs.lab2.controller;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,9 +20,11 @@ public class ControllerServletFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws ServletException, IOException {
         logger.log(Level.INFO, "Received request from IP " + servletRequest.getRemoteAddr() + " with parameters: " + servletRequest.getParameterNames());
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
-    public void destroy() {}
+    public void destroy() {
+    }
 }

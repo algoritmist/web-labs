@@ -1,10 +1,10 @@
 package org.algoritmist.weblabs.lab2.model;
 
 
-
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,15 +22,17 @@ public class AreaCheckServletFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws ServletException, IOException {
         String xVals = Arrays.toString(servletRequest.getParameterValues("x"));
         String yVals = Arrays.toString(servletRequest.getParameterValues("y"));
         String rVals = Arrays.toString(servletRequest.getParameterValues("r"));
         String message = String.format("received coordinates\n\tx: %s\n\ty: %s\n\tr: %s\n",
                 xVals, yVals, rVals);
         logger.log(Level.INFO, message);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
-    public void destroy() {}
+    public void destroy() {
+    }
 }
