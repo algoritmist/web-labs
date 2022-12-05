@@ -1,12 +1,13 @@
 package org.algoritmist.weblabs.lab2.model;
 
 import com.google.gson.Gson;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.algoritmist.weblabs.lab2.shapes.Point;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -15,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-@WebServlet("/areaCheck")
+@WebServlet(value = "/AreaCheck")
 public class AreaCheckServlet extends HttpServlet {
     private final Logger logger = Logger.getLogger("org.algoritmist.weblabs.lab2.model");
 

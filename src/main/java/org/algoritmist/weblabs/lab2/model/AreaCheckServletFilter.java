@@ -2,14 +2,15 @@ package org.algoritmist.weblabs.lab2.model;
 
 
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
+
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@WebFilter("/areaFilter")
+@WebFilter(urlPatterns = {"/AreaCheck"})
 public class AreaCheckServletFilter implements Filter {
     private ServletContext context;
     private final Logger logger = Logger.getLogger("org.algoritmist.weblabs.lab2.model");
@@ -21,7 +22,7 @@ public class AreaCheckServletFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain){
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
         String xVals = Arrays.toString(servletRequest.getParameterValues("x"));
         String yVals = Arrays.toString(servletRequest.getParameterValues("y"));
         String rVals = Arrays.toString(servletRequest.getParameterValues("r"));
@@ -31,7 +32,5 @@ public class AreaCheckServletFilter implements Filter {
     }
 
     @Override
-    public void destroy() {
-
-    }
+    public void destroy() {}
 }

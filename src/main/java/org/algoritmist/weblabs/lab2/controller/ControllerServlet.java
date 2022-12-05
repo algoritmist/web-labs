@@ -1,19 +1,18 @@
 package org.algoritmist.weblabs.lab2.controller;
 
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@WebServlet("/check")
+@WebServlet(value = "/Check")
 public class ControllerServlet extends HttpServlet {
     private final Logger logger = Logger.getLogger("org.algoritmist.weblabs.lab2.controller");
 
@@ -30,7 +29,7 @@ public class ControllerServlet extends HttpServlet {
 
         if (requestType.equals("AREACHECK")) {
             try {
-                request.getRequestDispatcher("/areaCheck").forward(request, response);
+                request.getRequestDispatcher("/AreaCheck").forward(request, response);
             } catch (ServletException | IOException e) {
                 logger.log(Level.WARNING, e.getMessage());
             }
